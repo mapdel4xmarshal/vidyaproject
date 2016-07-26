@@ -2,7 +2,6 @@
 <html lang="en">
     <head>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-     <link href="map.css" rel="stylesheet">
      <!-- Bootstrap -->
      <link href="css/bootstrap.min.css" rel="stylesheet">
      <!-- Custom Theme Style -->
@@ -11,15 +10,61 @@
 
     <body>
         <div id="mapwrapper">
-           <div id="myMap">
-
-           </div>
+           <div id="myMap"></div>
+            
+            <div id="error"></div>  
+            
            <!-- survey content --> 
            <div id="survey" class="col-md-9 col-sm-9 col-xs-12">
                 <div id="survey_panel" class="panel panel-default">
                   <div class="panel-heading">Hanover Community survey</div>
-                  <div class="panel-body">                          
-                             
+                  <div class="panel-body">  
+                      <!--inside panel body --> 
+                      <div class="form-group">    
+                        <div class="">
+                            <div id="start" class="show">
+                                <p>Welcome to the Hanover City Survey. Click start to begin!</p><center>
+                                <button id="start_survey" class="btn btn-lg btn-primary">Start <span class="glyphicon glyphicon-chevron-right"></span></button> </center>
+                            </div>
+                            <div id="question_1"  class="hide">
+                                <label class="control-label" for="answer_1">
+                                    <small>Question 1 : <span class="">*</span></small>
+                                </label>
+                                <small>Type the name of your favourite location in Hanover and indicate it on the map with a pin</small>
+
+                                <div class="input-group">
+                                    <input type="text" name="answer_1" id="answer_1"  required placeholder="e.g Hanover park" class="form-control col-md-9 col-lg-12">
+                                    <span class="input-group-btn">
+                                          <button type="button" id= "pin_1" class="btn btn-default"><span class="glyphicon glyphicon-map-marker"></span></button>
+                                    </span>
+                                </div> 
+
+                            </div>
+
+                            <div id="question_2"  class="hide">
+                                <label class="control-label" for="answer_2">
+                                    <small>Question 2 : <span class="">*</span></small>
+                                </label>
+                                <small>Type the name of your least favourite location in Hanover and indicate it on the map with a pin</small>
+                                <div class="input-group">
+                                     <input type="text" name="answer_2" id="answer_2"  required placeholder="e.g Hanover cementry" class="form-control col-md-9 col-lg-12">
+                                     <span class="input-group-btn">
+                                      <button type="button" id= "pin_2" class="btn btn-default"><span class="glyphicon glyphicon-map-marker"></span></button>
+                                     </span>
+                                </div> 
+                            </div>
+
+                        </div>
+                          <div class="clearfix"></div>
+                          <p></p>
+                          <button id= "prev" class="floatLeft btn btn-default hide"><span class="glyphicon glyphicon-chevron-left"></span> previous</button>
+                          <button id="next" class="floatRight btn btn-primary hide">next <span class="glyphicon glyphicon-chevron-right"></span></button> 
+
+                          <button id="complete" class="floatRight btn btn-primary hide">Complete <span class="glyphicon glyphicon-chevron-right"></span></button> 
+                    </div>
+                      
+                    <!--inside panel body ends--> 
+                      
                   </div>
                 </div>      
            </div>
@@ -31,12 +76,12 @@
         
         <!-- jQuery -->
         <script src="js/jquery.min.js"></script>
-
-        <!-- Hanover Map Script -->
-        <script src="js/map/map.js"></script>
         
         <!--Survey Script -->
         <script src="js/survey/survey.js"></script>
+
+        <!-- Hanover Map Script -->
+        <script src="js/map/map.js"></script>
         
         <!-- App Responsive Script -->
         <script src="js/responsive/responsive.js"></script>

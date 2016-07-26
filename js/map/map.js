@@ -7,7 +7,7 @@
     {
         var mapProp = {
           center:myCenter,
-          zoom:13,
+          zoom:15,
           mapTypeId:google.maps.MapTypeId.ROADMAP
           };
 
@@ -19,8 +19,6 @@
         removeMarker(map);
     }
     
-    
-
     function placeMarker(location, val) {
       var marker = createMarker(location);
         
