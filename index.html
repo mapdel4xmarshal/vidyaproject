@@ -6,6 +6,7 @@
      <link href="css/bootstrap.min.css" rel="stylesheet">
      <!-- Custom Theme Style -->
      <link href="css/map.css" rel="stylesheet">
+     <link href="css/error.css" rel="stylesheet">
     </head>
 
     <body>
@@ -33,9 +34,9 @@
                                 <small>Type the name of your favourite location in Hanover and indicate it on the map with a pin</small>
 
                                 <div class="input-group">
-                                    <input type="text" name="answer_1" id="answer_1"  required placeholder="e.g Hanover park" class="form-control col-md-9 col-lg-12">
+                                    <input type="text" name="answer_1" id="answer_1" value='' required placeholder="e.g Hanover park" class="form-control col-md-9 col-lg-12">
                                     <span class="input-group-btn">
-                                          <button type="button" id= "pin_1" class="btn btn-default"><span class="glyphicon glyphicon-map-marker"></span></button>
+                                          <button type="button" id= "pin_1" class="btn btn-default"><span id= "pin_1" class="glyphicon glyphicon-map-marker"></span></button>
                                     </span>
                                 </div> 
 
@@ -49,7 +50,7 @@
                                 <div class="input-group">
                                      <input type="text" name="answer_2" id="answer_2"  required placeholder="e.g Hanover cementry" class="form-control col-md-9 col-lg-12">
                                      <span class="input-group-btn">
-                                      <button type="button" id= "pin_2" class="btn btn-default"><span class="glyphicon glyphicon-map-marker"></span></button>
+                                      <button type="button" id= "pin_2" class="btn btn-default"><span id= "pin_2" class="glyphicon glyphicon-map-marker"></span></button>
                                      </span>
                                 </div> 
                             </div>
@@ -76,6 +77,9 @@
         
         <!-- jQuery -->
         <script src="js/jquery.min.js"></script>
+        
+        <!-- Bootstrap -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         
         <!--Survey Script -->
         <script src="js/survey/survey.js"></script>

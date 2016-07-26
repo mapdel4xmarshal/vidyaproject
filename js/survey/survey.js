@@ -1,8 +1,10 @@
-(function(){    
-    //window.onload = function()
-    //{        
+(function(){   
         var question = 0;
-
+        
+    $(window).click(function(e){
+        if($(e.target).attr('id') == "error_dismiss")
+            $("#error").css("z-index", '-99');
+    });
         $("#start_survey").click(function(){
 
             $("#start").removeClass("show");
@@ -15,9 +17,10 @@
             if($(this).hasClass("disabled"))
             {
                 $("#error").html('<div class="alert alert-danger">' +
-                                 '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
-                                 '<span class="floatLeft"><strong>App Error!'+
-                                 '</strong> Please place pin on map</span></div>');    
+                                 '<a href="#" id="error_dismiss" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
+                                 '<span class=""><strong>App Error!'+
+                                 '</strong> Please place pin on map</span></div>');
+                $("#error").css("z-index", '99');
             }
             else
             if(doValidate("answer_"+question,question)) doNext();
@@ -26,10 +29,21 @@
         $("#prev").click(function(){        
             doPrev();
         });
+    
+        $("#survey").click(function(e){
+            var targetID = $(e.target).attr('id');
+            if(targetID.indexOf("pin_") != -1)
+                {
+                    var questin = targetID.substring(targetID.indexOf("_")+1,targetID.length);
+                    if(doValidate("answer_"+questin,questin)){                    
+                    if($("#answer_"+questin).prop('value').length > 0)
+                    var mark = placePin($("#answer_"+questin).prop('value'),"#answer_"+questin);}
+                }
+        });
 
         $("#complete").click(function(){        
             //$().addClass("hide");
-            $("#survey").html('<div id="survey" class="alert alert-success"><span class="floatLeft"><strong>Completed!'+
+            $("#survey").html('<div id="survey" class="alert alert-success"><span class=""><strong>Completed!'+
                      '</strong> Thank you for responding to the survey.</span> <button class="btn btn-danger floatRight padbtm">sign out</button></div>');
         });
 
@@ -115,21 +129,22 @@
             }        
         }
 
-    //}
-
 
     function doValidate(name,i)
     {
         if($('#'+name).length != 0){
-            var x = $('#'+name).val();
+            var x = $('#'+name).prop('value');
             if (x == null || x == "" || x.length <= 2) {
-                alert("Please input a valid answer for question " + i);
+                $("#error").html('<div class="alert alert-danger">' +
+                                 '<a href="#" class="close" id="error_dismiss" data-dismiss="alert" aria-label="close">&times;</a>'+
+                                 '<span class=""><strong>Input Error!'+
+                                 '</strong> Please input a valid answer for question ' + i + '</span></div>'); 
+                $("#error").css("z-index", '99');
                 return false;
-            }
-            doPin();
+            }            
         }
-
-
         return true;
     }
+    
+    
 })();

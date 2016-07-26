@@ -1,0 +1,10 @@
+#error { 
+    position: absolute; 
+    top: 60%; 
+    z-index: -99; 
+    width : 60%;
+    height: 20%;
+    padding: 10px;
+    min-width: 220px;
+    max-width: 500px;
+}
