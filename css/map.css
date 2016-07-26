@@ -11,7 +11,7 @@
 #survey { 
     position: absolute; 
     //background-color: azure;
-    bottom: 4%; 
+    bottom: 20%; 
     z-index: 99; 
     width : 60%;
     height: 20%;

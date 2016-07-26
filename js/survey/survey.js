@@ -6,11 +6,12 @@
             $("#error").css("z-index", '-99');
     });
         $("#start_survey").click(function(){
+            if(doLogin()== 'connected'){
+                $("#start").removeClass("show");
+                $("#start").addClass("hide");
 
-            $("#start").removeClass("show");
-            $("#start").addClass("hide");
-
-            doNext();
+                doNext();
+            }
         });
 
         $("#next").click(function(){ 
@@ -42,9 +43,19 @@
         });
 
         $("#complete").click(function(){        
-            //$().addClass("hide");
-            $("#survey").html('<div id="survey" class="alert alert-success"><span class=""><strong>Completed!'+
-                     '</strong> Thank you for responding to the survey.</span> <button class="btn btn-danger floatRight padbtm">sign out</button></div>');
+            if($(this).hasClass("disabled"))
+            {
+                $("#error").html('<div class="alert alert-danger">' +
+                                 '<a href="#" id="error_dismiss" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
+                                 '<span class=""><strong>App Error!'+
+                                 '</strong> Please answer the question and place pin on map</span></div>');
+                $("#error").css("z-index", '99');
+            }
+            else
+            {
+                $("#survey").html('<div id="" class="alert alert-success floatCenter"><span class=""><strong>Completed!'+
+                 '</strong> Thank you for responding to the survey.</span> <button class="btn btn-danger padbtm">sign out</button></div>');
+            }
         });
 
         function doNext()

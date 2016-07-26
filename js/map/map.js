@@ -2,8 +2,7 @@ var map;
 var markersArray = [];
 (function(){
     
-    var myCenter=new google.maps.LatLng(44.1527292,-81.0210223);
-    
+    var myCenter=new google.maps.LatLng(44.1527292,-81.0210223);    
     
     function initMap()
     {
@@ -14,26 +13,7 @@ var markersArray = [];
           };
 
           map = new google.maps.Map(document.getElementById("myMap"),mapProp);
-
-         // pin;
-       // });  
-       // removeMarker(map);
     }
-    
-   
-    
-    /*
-    
-    function getMarkerByPosition(location)
-    {
-        markersArray.forEach(function(_marker,index){
-            if(_marker.getPosition() == location)
-                {
-                    return(_marker);
-                }
-        });
-    }
-*/
     
     //initialize map
     google.maps.event.addDomListener(window, 'load', initMap);    
@@ -89,7 +69,7 @@ var pin = (function()
 function placePin(val,id)
 {
     var _marker = 'null';
-    if(!checkMarkerExists(id)){
+    if(checkMarkerExists(id) === 'false'){
         google.maps.event.addListener(map, 'click', function(event) {         
 
             _marker = new google.maps.Marker({
@@ -100,14 +80,24 @@ function placePin(val,id)
             });
 
              if(_marker != 'null'){
-            $('#next').removeClass('disabled');                  
-            markersArray.push(_marker); 
-            addShowMarkerInfo(_marker,val);
-            google.maps.event.clearListeners(map, 'click');}    
+                $('#next').removeClass('disabled');   
+                if($('#complete').hasClass('show')){$('#complete').removeClass('disabled');}
+                markersArray.push(_marker);
+                addShowMarkerInfo(_marker,val);
+                doRemoveMarker(_marker);
+                google.maps.event.clearListeners(map, 'click');
+             }    
         return _marker;
         });
     }
-    else alert("marker already exist. To darg to modify it or double click to delete it.");
+    else 
+    {
+        $("#error").html('<div class="alert alert-danger">' +
+             '<a href="#" class="close" id="error_dismiss" data-dismiss="alert" aria-label="close">&times;</a>'+
+             '<span class=""><strong>App Error! '+
+             '</strong> Marker already exist. Drag to modify it or double click to delete it.</span></div>'); 
+        $("#error").css("z-index", '99');
+    }
 }
 
 function addShowMarkerInfo(marker,val)
@@ -127,12 +117,28 @@ function addShowMarkerInfo(marker,val)
 
 
 function checkMarkerExists(title)
-    {alert('hhh');
+{
+    var result = 'false';
+    if(markersArray.length > 0)
+    {
         markersArray.forEach(function(_marker,index){
             if(_marker.getTitle() == title)
                 {
-                    return(true);
+                    result = 'true';
                 }
         });
-        return false;
     }
+    return (result);
+}
+
+function doRemoveMarker(marker)
+{
+    //remove marker with rightclick event 
+    google.maps.event.addListener(marker,'dblclick',function() {
+        marker.setMap(null);
+        
+        //remove marker from array
+        var markerIndex = markersArray.indexOf(marker);
+        markersArray.splice(markerIndex,1);          
+    }); 
+}
