@@ -20,50 +20,6 @@ var markersArray = [];
 
 })();
 
-var pin = (function()
-    {
-        function removeMarker(theMarker)
-        { 
-            //remove marker from array
-            var markerIndex = markersArray.indexOf(theMarker);
-            markersArray.splice(markerIndex,1);
-        }   
-
-
-        function createMarker(location)
-        {
-            var _marker = new google.maps.Marker({
-                position: location,
-                draggable: true,
-                map: map,
-                });
-            if(typeof _marker != 'undefined'){markersArray.push(_marker); 
-               google.maps.event.clearListeners(map, 'click');}
-            return(_marker);
-        }
-        
-         function placeMarker(location, val) {
-          var marker = createMarker(location);
-
-          var infowindow = new google.maps.InfoWindow({
-            content:  val
-          });     
-
-             //Open info window with click event
-            google.maps.event.addListener(marker,'click',function() {
-                infowindow.open(map,marker);
-            });      
-
-            //remove marker with rightclick event 
-            google.maps.event.addListener(marker,'dblclick',function() {
-                marker.setMap(null);
-                removeMarker(marker);            
-            }); 
-        }
-        google.maps.event.addListener(map, 'click', function(event) {
-          placeMarker(event.latLng,x);}); 
-    })();
-
 
 
 function placePin(val,id)

@@ -1,0 +1,1 @@
+[27-Jul-2016 04:31:33 UTC] PHP Catchable fatal error:  Object of class mysqli_result could not be converted to string in /home/bmtool/public_html/vidyaproject/php/dbscript.php on line 14

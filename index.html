@@ -12,8 +12,10 @@
     <body>
         <div id="mapwrapper">
            <div id="myMap"></div>
+           
+           <div id="welcome"></div>  
             
-            <div id="error"></div>  
+           <div id="error"></div>  
             
            <!-- survey content --> 
            <div id="survey" class="col-md-9 col-sm-9 col-xs-12">
@@ -27,46 +29,19 @@
                                 <center>
                                     <p>Welcome to the Hanover City Survey. Login to begin!</p>
                                 
-                                    <button id="start_survey" class="btn btn-lg btn-primary">Sign in with Facebook <span class="glyphicon glyphicon-chevron-right"></span>
+                                    <button id="start_survey" class="btn btn-md btn-primary">Sign in with Facebook <span class="glyphicon glyphicon-chevron-right"></span>
                                     </button> 
                                 </center>
                             </div>
-                            <div id="question_1"  class="hide">
-                                <label class="control-label" for="answer_1">
-                                    <small>Question 1 : <span class="">*</span></small>
-                                </label>
-                                <small>Type the name of your favourite location in Hanover and indicate it on the map with a pin</small>
-
-                                <div class="input-group">
-                                    <input type="text" name="answer_1" id="answer_1" value='' required placeholder="e.g Hanover park" class="form-control col-md-9 col-lg-12">
-                                    <span class="input-group-btn">
-                                          <button type="button" id= "pin_1" class="btn btn-default"><span id= "pin_1" class="glyphicon glyphicon-map-marker"></span></button>
-                                    </span>
-                                </div> 
-
-                            </div>
-
-                            <div id="question_2"  class="hide">
-                                <label class="control-label" for="answer_2">
-                                    <small>Question 2 : <span class="">*</span></small>
-                                </label>
-                                <small>Type the name of your least favourite location in Hanover and indicate it on the map with a pin</small>
-                                <div class="input-group">
-                                     <input type="text" name="answer_2" id="answer_2"  required placeholder="e.g Hanover cementry" class="form-control col-md-9 col-lg-12">
-                                     <span class="input-group-btn">
-                                      <button type="button" id= "pin_2" class="btn btn-default"><span id= "pin_2" class="glyphicon glyphicon-map-marker"></span></button>
-                                     </span>
-                                </div> 
-                            </div>
-
+                            <div id="questions"></div>
                         </div>
-                          <div class="clearfix"></div>
-                          <p></p>
-                          <button id= "prev" class="floatLeft btn btn-default hide"><span class="glyphicon glyphicon-chevron-left"></span> previous</button>
-                          <button id="next" class="floatRight btn btn-primary hide">next <span class="glyphicon glyphicon-chevron-right"></span></button> 
+							<div class="clearfix"></div>
+							<p></p>
+							<button id= "prev" class="floatLeft btn btn-default hide"><span class="glyphicon glyphicon-chevron-left"></span> previous</button>
+							<button id="next" class="floatRight btn btn-primary hide">next <span class="glyphicon glyphicon-chevron-right"></span></button> 
 
                           <button id="complete" class="floatRight btn btn-primary hide disabled">Finish</button> 
-                    </div>
+					  </div>
                       
                     <!--inside panel body ends--> 
                       
@@ -77,7 +52,7 @@
         </div>
 
         <!-- Google Map Api Library -->
-        <script src="http://maps.googleapis.com/maps/api/js?Key=AIzaSyABaCFVGv-3LU6iMac-4sUHTLM50rrY4gE"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_V0tFIau3mM7sf36-JdhKpSW1NAGZRxs"></script>
         
         <!-- facebook login -->
         <script src="js/facebook/facebook.js"></script>
